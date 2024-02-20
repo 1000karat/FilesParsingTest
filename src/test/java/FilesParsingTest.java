@@ -30,8 +30,7 @@ public class FilesParsingTest {
     void jsonParseJacksonTest() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        try (InputStream is = cl.getResourceAsStream("jsonArrayTestNoZip.json");
-             InputStreamReader isr = new InputStreamReader(is)) {
+        try (InputStream is = cl.getResourceAsStream("jsonArrayTestNoZip.json")) {
             JsonRoot jr = objectMapper.readValue(is, JsonRoot.class);
 
             assertThat(jr.getMembers().get(0).getName()).endsWith("Man");
