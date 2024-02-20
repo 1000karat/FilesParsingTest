@@ -10,12 +10,15 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-log4j2:3.2.2'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
-    testImplementation 'com.codeborne:selenide:7.1.0'
     testImplementation 'org.assertj:assertj-core:3.25.3'
     testImplementation 'com.google.code.gson:gson:2.10.1'
     testImplementation 'com.fasterxml.jackson.core:jackson-core:2.16.1'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    testImplementation 'com.codeborne:pdf-test:1.5.0'
+    testImplementation 'com.codeborne:xls-test:1.4.3'
+    testImplementation 'com.opencsv:opencsv:5.9'
 }
 
 test {
