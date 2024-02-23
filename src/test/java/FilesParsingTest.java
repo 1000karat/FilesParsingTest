@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import model.JsonRoot;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ public class FilesParsingTest {
     Gson gson = new Gson();
 
     @Test
-    void csvParseFromZipTest() throws IOException, CsvException {
+    @DisplayName("Тест файла *.csv из архива")
+    public void csvParseFromZipTest() throws IOException, CsvException {
         String content = ZipHelper.readFileContentFromZip("SampleCSVFile_11kb.csv");
 
         CSVReader csvReader = new CSVReader(new StringReader(content));
@@ -30,7 +32,8 @@ public class FilesParsingTest {
     }
 
     @Test
-    void xlsxParseFromZipTest() throws IOException {
+    @DisplayName("Тест файла *.xlsx из архива")
+    public void xlsxParseFromZipTest() throws IOException {
         byte[] fileContent = ZipHelper.readFileContentByteFromZip("Free_Test_Data_XLSX.xlsx");
         XLS xls = new XLS(fileContent);
 
@@ -39,7 +42,8 @@ public class FilesParsingTest {
     }
 
     @Test
-    void pdfParseFromZipTest() throws IOException {
+    @DisplayName("Тест файла *.pdf из архива")
+    public void pdfParseFromZipTest() throws IOException {
         byte[] fileContent = ZipHelper.readFileContentByteFromZip("junit5.pdf");
 
         PDF pdf = new PDF(fileContent);
@@ -49,7 +53,8 @@ public class FilesParsingTest {
     }
 
     @Test
-    void jsonParseGsonFromZipTest() throws IOException {
+    @DisplayName("Тест файла *.json из zip архива с помощью Gson")
+    public void jsonParseGsonFromZipTest() throws IOException {
         String fileContent = ZipHelper.readFileContentFromZip("jsonArrayTest.json");
 
         JsonRoot jr = gson.fromJson(fileContent, JsonRoot.class);
@@ -60,7 +65,8 @@ public class FilesParsingTest {
     }
 
     @Test
-    void jsonParseGsonTest() throws IOException {
+    @DisplayName("Тест файла *.json без архива с помощью Gson")
+    public void jsonParseGsonTest() throws IOException {
 
         try (InputStream is = cl.getResourceAsStream("jsonArrayTestNoZip.json");
              InputStreamReader isr = new InputStreamReader(is)) {
@@ -73,7 +79,8 @@ public class FilesParsingTest {
     }
 
     @Test
-    void jsonParseJacksonTest() throws IOException {
+    @DisplayName("Тест файла *.json без архива с помощью Jakson")
+    public void jsonParseJacksonTest() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try (InputStream is = cl.getResourceAsStream("jsonArrayTestNoZip.json")) {
